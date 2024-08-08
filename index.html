@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body{
+            background-color: #f5b7b5;
+        }
+        #div{
+            margin-top: 150px;
+            width: 500px;
+            height: 300px;
+            color: black;
+            border-radius: 10px;
+            background-color: #eaf2f8;
+        }
+        #div h2{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+        #inp{
+            width: 150px;
+            height: 30px;
+            font-size: 20px;
+            background-color: white;
+        }
+        h2{
+            padding: 30px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            border-radius: 2%;
+            background-color:#f5b7d5;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="div">
+            <h2>AGE CALCULATOR <hr></h2>
+            <h3>Enter your DOB:  <input type="date" id="inp"></h3><br>
+            <button type="submit" onclick="dis()">Calculate</button>
+            <div id="gg"></div>
+        </div>
+        <script>
+            function dis(){
+                var val=document.getElementById("inp")
+                var tdy=new Date()
+                var dob=new Date(val.value)
+                let d1=tdy.getDate()
+                let d2=dob.getDate()
+                let m1=tdy.getMonth()
+                
+                let m2=dob.getMonth()
+                
+                let y=tdy.getFullYear()-dob.getFullYear()
+                let y2=tdy.getFullYear()
+                if(m2>=m1){
+                     m3=(m1+12)-m2
+                    y--
+                }
+                else{
+                    m3=m1-m2
+                }
+                if(d2>=d1){
+                    days=new Date(y2,m2,0).getDate()
+                    d3=(days+d1)-d2
+                    m3--
+                }
+                else{
+                    d3=d1-d2
+                }
+                if (m3<0){
+                    m3=11
+                    y--
+                }
+                var h=document.getElementById("gg")
+                h.innerHTML=`<h3>Your age is: ${d3} days ${m3} months ${y} years</h3>`
+            }
+        </script>
+    </center>
+</body>
+</html>
